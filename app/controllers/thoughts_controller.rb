@@ -2,7 +2,7 @@ class ThoughtsController < ApplicationController
 
     # POST /thoughts
     def create
-        return json: {success: false} unless current_user.id == params[:user_id]
+        render json: {success: false} unless current_user.id == params[:user_id]
         @thoughts = Thoughts.new(thoughts_params)
 
         if thoughts.save
@@ -14,7 +14,7 @@ class ThoughtsController < ApplicationController
 
     # PATCH/PUT /thoughtss/1
     def update
-        return json: {success: false} unless current_user.id == params[:user_id]
+        render json: {success: false} unless current_user.id == params[:user_id]
         @thoughts = Thoughts.find(params[:id])
         if @thoughts.update(thoughts_params)
             render json: @thoughts
@@ -25,7 +25,7 @@ class ThoughtsController < ApplicationController
 
     # DELETE /thoughtss/1
     def destroy
-        return json: {success: false} unless current_user.id == params[:user_id]
+        render json: {success: false} unless current_user.id == params[:user_id]
         @thoughts = Thoughts.find(params[:id])
         if @thoughts.destroy
             render json: {success: true}

@@ -1,4 +1,4 @@
 class UserSerializer < ActiveModel::Serializer 
-    attr :username
+    attributes :username
     has_many :folders 
 end
