@@ -3,7 +3,7 @@ class FoldersController < ApplicationController
 
     # GET /folders
     def index
-        return json: {success: false} unless current_user.id == params[:user_id]
+        return json: {success: true} unless current_user.id == params[:user_id]
         @folders = current_user.folders
     end
 
@@ -13,7 +13,7 @@ class FoldersController < ApplicationController
         if @folder = Folder.find(params[:id])
             return jason: @folder
         else
-            return json: {success: false{}
+            return json: {success: false}
         end
     end
 

@@ -18,3 +18,4 @@ user1.avatar.attach(
     filename: 'brain.jpeg',
     content_type: 'application/jpeg'
 )
+folder1 = Folder.create(title: "First", user_id: 1, color:"red")

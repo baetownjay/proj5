@@ -5,11 +5,19 @@ class UsersController < ApplicationController
     end
 
     def create
-        byebug
+        
     end
 
     def show
-        byebug
+        user = User.find_by(username: params[:username])
+        avatar = rails_blobs_path(user.avatar)
+
+        if user.password == params[:password]
+            render json: {user: user, avatar: avatar}
+
+        else 
+            render json: { message: "THIS USER IS NOT AUTHENTICATED"}
+        end
     end
 
     def update
