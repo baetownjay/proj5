@@ -1,19 +1,31 @@
 Rails.application.routes.draw do
-  resources :sessions, only: [:create]
-  resources :registrations, only: [:create]
-  resources :logout, to: "sessions#logout"
-  get :logged_in, to: "sessions#logged_in"
-  resources :thoughts
-  resources :folders
-  resources :users
-  post '/login', to: 'users#show'
-  get '/login', to: 'users#show'
-  # get './login', to: 'sessions#create'
-  get './logout', to: 'sessions#logout'
-  get './signup', to: 'registrations#create'
+
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+  get '/logged_in', to: 'sessions#is_logged_in?'
   
-  # root to: "static#home"
+  resources :users, only: [:create, :show, :index]
+end
+
+
+
+
+
+#   resources :sessions, only: [:create]
+#   resources :registrations, only: [:create]
+#   resources :logout, to: "sessions#logout"
+#   get :logged_in, to: "sessions#logged_in"
+#   resources :thoughts
+#   resources :folders
+#   resources :users
+#   post '/login', to: 'users#show'
+#   get '/login', to: 'users#show'
+#   # get './login', to: 'sessions#create'
+#   get './logout', to: 'sessions#logout'
+#   get './signup', to: 'registrations#create'
+  
+#   # root to: "static#home"
  
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
+#   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+# end

@@ -1,26 +1,51 @@
 class UsersController < ApplicationController
     def index 
-        users = User.all
-        render json: users
-    end
 
-    def create
-        
+      @users = User.all
+      if @users
+        render json: {
+          users: @users
+        }
+      else 
+        render json: {
+            status: 500,
+            errors: ['no users found']
+          }
+      end
+      
     end
-
     def show
-        user = User.find_by(username: params[:username])
-        avatar = rails_blobs_path(user.avatar)
-
-        if user.password == params[:password]
-            render json: {user: user, avatar: avatar}
-
-        else 
-            render json: { message: "THIS USER IS NOT AUTHENTICATED"}
+        @user = User.find(params[:id])
+       if @user
+          render json: {
+            user: @user
+          }
+        else
+          render json: {
+            status: 500,
+            errors: ['user not found']
+          }
         end
     end
-
-    def update
+      
+      def create
+        @user = User.new(user_params)
+        if @user.save
+          login!
+          render json: {
+            status: :created,
+            user: @user
+          }
+        else 
+          render json: {
+            status: 500,
+            errors: @user.errors.full_messages
+          }
+        end
+      end
+    private
+      
+      def user_params
+        params.require(:user).permit(:username, :email, :password, :password_confirmation)
+      end
     end
-
-end
