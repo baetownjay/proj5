@@ -24,7 +24,7 @@ end
 #   get './logout', to: 'sessions#logout'
 #   get './signup', to: 'registrations#create'
   
-#   # root to: "static#home"
+root to: "/"
  
 
 #   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
