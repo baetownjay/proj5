@@ -19,3 +19,6 @@ user1.avatar.attach(
     content_type: 'application/jpeg'
 )
 folder1 = Folder.create(title: "First", user_id: 1, color:"red")
+
+user2 = User.create(username: "Jayson", password: "lol")
+folder1 = Folder.create(title: "mY forst", user_id: 2, color:"blue")
