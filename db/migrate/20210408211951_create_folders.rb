@@ -3,7 +3,7 @@ class CreateFolders < ActiveRecord::Migration[6.1]
     create_table :folders do |t|
       t.string :title
       t.references :user, null: false, foreign_key: true
-      t.string :color
+      t.string :color, :default => "Blue"
 
       t.timestamps
     end
