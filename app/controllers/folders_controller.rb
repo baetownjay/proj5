@@ -7,9 +7,7 @@ class FoldersController < ApplicationController
         
         @folders = Folder.all
         if @folders
-            render json: {
-                folders: @folders
-            }
+            render json: @folders, include: :thoughts
         else
             render json: {
                 status: 500, 
@@ -64,11 +62,11 @@ class FoldersController < ApplicationController
     def create
         @folder = Folder.new(folder_params)
         if @folder.save
-          login!
-          render json: {
-            status: :created,
-            folder: @folder
-          }
+        #   # login!
+          render json: @folder
+        #     status: :created,
+        #     folder: @folder
+          
         else 
           render json: {
             status: 500,

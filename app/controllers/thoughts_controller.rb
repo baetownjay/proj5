@@ -45,11 +45,9 @@ class ThoughtsController < ApplicationController
     def create
         @thought = Thought.new(thought_params)
         if @thought.save
-          login!
-          render json: {
-            status: :created,
-            thought: @thought
-          }
+          
+          render json: @thought
+            
         else 
           render json: {
             status: 500,
