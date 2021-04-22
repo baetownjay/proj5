@@ -7,12 +7,21 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'http://localhost:3001', 'https://zenquotes.io/api/', 'http://localhost:3001/login', 'https://zenquotes.io/api/today', 'https://zenquotes.io/api/random', 'http://localhost:3000'
-
+    # origins ['http://localhost:3001/', 'http://localhost:3001/login', 'https://zenquotes.io/api/random']
+    origins 'http://localhost:3001'
     resource '*',
       headers: :any,
+      
+      # methods: [:get, :post, :put, :patch, :delete, :options, :head]
       methods: [:get, :post, :put, :patch, :delete, :options, :head],
       credentials: true
       
   end
 end
+
+# config.middleware.insert_before 0, Rack::Cors do
+#   allow do
+#      origins '*'
+#      resource '*', :headers => :any, :methods => [:get, :post, :options]
+#    end
+# end
