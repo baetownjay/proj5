@@ -35,3 +35,4 @@ Thought.destroy_all
 # folder1 = Folder.create(title: "mY forst", user_id: User.all.second.id, color:"blue")
 
 # thought1 = Thought.create(title: "thought1", description: "this is the first ever thought in my brain", image: "", folder_id: 2, public: true)
+#comments are created by pound signs in ruby!!
